@@ -1,0 +1,2690 @@
+{
+	"info": {
+		"_postman_id": "e5a0f7f9-198c-4c91-9bb5-59ff07c7e08d",
+		"name": "alexander_tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30252473"
+	},
+	"item": [
+		{
+			"name": "Позитивные",
+			"item": [
+				{
+					"name": "Добавить товар в корзину через превью товара",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+									"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+									"quantity = parseInt(quantity);\r",
+									"pm.test(\"Товар был добавлен корректно\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var expected_sum_quantity = (parseInt(current_sum_quantity) + quantity).toString();\r",
+									"    pm.expect(jsonData.sum_quantity).to.eql(expected_sum_quantity);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"current_sum_quantity\", pm.response.json().sum_quantity);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "testk1n00",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "testk1no@yandex.ru",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_id",
+									"value": "{{product_id}}",
+									"type": "text"
+								},
+								{
+									"key": "LANG_key",
+									"value": "ru",
+									"type": "text"
+								},
+								{
+									"key": "S_wh",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "S_CID",
+									"value": "{{id_session}}",
+									"type": "text"
+								},
+								{
+									"key": "S_cur_code",
+									"value": "rub",
+									"type": "text"
+								},
+								{
+									"key": "S_koef",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "{{quantity}}",
+									"type": "text"
+								},
+								{
+									"key": "S_hint_code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "S_customerID",
+									"value": "{{customer_id}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"add_products_to_cart_from_preview.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавить товар в корзину через превью товара, язык английский, валюта доллар",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+									"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+									"quantity = parseInt(quantity);\r",
+									"pm.test(\"Товар был добавлен корректно\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var expected_sum_quantity = (parseInt(current_sum_quantity) + quantity).toString();\r",
+									"    pm.expect(jsonData.sum_quantity).to.eql(expected_sum_quantity);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"current_sum_quantity\", pm.response.json().sum_quantity);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "testk1n00",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "testk1no@yandex.ru",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_id",
+									"value": "{{product_id}}",
+									"type": "text"
+								},
+								{
+									"key": "LANG_key",
+									"value": "en",
+									"type": "text"
+								},
+								{
+									"key": "S_wh",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "S_CID",
+									"value": "{{id_session}}",
+									"type": "text"
+								},
+								{
+									"key": "S_cur_code",
+									"value": "dol",
+									"type": "text"
+								},
+								{
+									"key": "S_koef",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "{{quantity}}",
+									"type": "text"
+								},
+								{
+									"key": "S_hint_code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "S_customerID",
+									"value": "{{customer_id}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"add_products_to_cart_from_preview.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить товар (уменьшить количество товара) через превью товара",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+									"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+									"quantity = parseInt(quantity);\r",
+									"pm.test(\"Товар был удален корректно\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var expected_sum_quantity = (parseInt(current_sum_quantity) - quantity).toString();\r",
+									"    pm.expect(jsonData.sum_quantity).to.eql(expected_sum_quantity);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"current_sum_quantity\", pm.response.json().sum_quantity);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "testk1n00",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "testk1no@yandex.ru",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_id",
+									"value": "{{product_id}}",
+									"type": "text"
+								},
+								{
+									"key": "LANG_key",
+									"value": "ru",
+									"type": "text"
+								},
+								{
+									"key": "S_wh",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "S_CID",
+									"value": "{{id_session}}",
+									"type": "text"
+								},
+								{
+									"key": "S_cur_code",
+									"value": "rub",
+									"type": "text"
+								},
+								{
+									"key": "S_koef",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "{{quantity}}",
+									"type": "text"
+								},
+								{
+									"key": "S_hint_code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "S_customerID",
+									"value": "{{customer_id}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/delete_products_from_cart_preview_by_productID.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delete_products_from_cart_preview_by_productID.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавить товар в корзину через персональную карточку товара",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+									"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+									"quantity = parseInt(quantity);\r",
+									"pm.test(\"Товар был добавлен корректно\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var expected_sum_quantity = (parseInt(current_sum_quantity) + 3).toString();\r",
+									"    pm.expect(jsonData.sum_quantity).to.eql(expected_sum_quantity);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"current_sum_quantity\", pm.response.json().sum_quantity);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "testk1n00",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "testk1no@yandex.ru",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_id",
+									"value": "{{product_id}}",
+									"type": "text"
+								},
+								{
+									"key": "this_listId",
+									"value": "product_card",
+									"type": "text"
+								},
+								{
+									"key": "parent_product",
+									"value": "{{product_id}}",
+									"type": "text"
+								},
+								{
+									"key": "LANG_key",
+									"value": "ru",
+									"type": "text"
+								},
+								{
+									"key": "S_wh",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "S_CID",
+									"value": "{{id_session}}",
+									"type": "text"
+								},
+								{
+									"key": "S_cur_code",
+									"value": "rub",
+									"type": "text"
+								},
+								{
+									"key": "S_koef",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "S_hint_code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "S_customerID",
+									"value": "{{customer_id}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"add_products_to_cart_from_preview.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить товар (уменьшить количество товара) через карточку товара",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+									"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+									"quantity = parseInt(quantity);\r",
+									"pm.test(\"Товар был удален корректно\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var expected_sum_quantity = (parseInt(current_sum_quantity) - quantity).toString();\r",
+									"    pm.expect(jsonData.sum_quantity).to.eql(expected_sum_quantity);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"current_sum_quantity\", pm.response.json().sum_quantity);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "testk1n00",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "testk1no@yandex.ru",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_id",
+									"value": "{{product_id}}",
+									"type": "text"
+								},
+								{
+									"key": "this_listId",
+									"value": "product_card",
+									"type": "text"
+								},
+								{
+									"key": "parent_product",
+									"value": "{{product_id}}",
+									"type": "text"
+								},
+								{
+									"key": "LANG_key",
+									"value": "ru",
+									"type": "text"
+								},
+								{
+									"key": "S_wh",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "S_CID",
+									"value": "{{id_session}}",
+									"type": "text"
+								},
+								{
+									"key": "S_cur_code",
+									"value": "rub",
+									"type": "text"
+								},
+								{
+									"key": "S_koef",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "{{quantity}}",
+									"type": "text"
+								},
+								{
+									"key": "S_hint_code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "S_customerID",
+									"value": "{{customer_id}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/delete_products_from_cart_preview_by_productID.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delete_products_from_cart_preview_by_productID.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение количество товара на странице корзины",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+									"\r",
+									"pm.test(\"Новое значение товара было установлено корректно\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.sum_quantity).to.eql(quantity);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "testk1n00",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "testk1no@yandex.ru",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "itemID",
+									"value": "{{itemIDbyCart}}",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "{{quantity}}",
+									"type": "text"
+								},
+								{
+									"key": "action",
+									"value": "update_quantity",
+									"type": "text"
+								},
+								{
+									"key": "LANG_key",
+									"value": "ru",
+									"type": "text"
+								},
+								{
+									"key": "S_wh",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "S_CID",
+									"value": "{{id_session}}",
+									"type": "text"
+								},
+								{
+									"key": "S_cur_code",
+									"value": "rub",
+									"type": "text"
+								},
+								{
+									"key": "S_koef",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "S_hint_code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "S_customerID",
+									"value": "{{customer_id}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/action_with_basket_on_cart_page.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"action_with_basket_on_cart_page.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить товар (всю категорию) через кнопку в корзине",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверяем, что sum_quantity равно 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.sum_quantity).to.eql(\"0\");\r",
+									"});\r",
+									"pm.collectionVariables.set(\"current_sum_quantity\", \"0\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "testk1n00",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "testk1no@yandex.ru",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_id",
+									"value": "{{product_id}}",
+									"type": "text"
+								},
+								{
+									"key": "LANG_key",
+									"value": "ru",
+									"type": "text"
+								},
+								{
+									"key": "S_wh",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "S_CID",
+									"value": "{{id_session}}",
+									"type": "text"
+								},
+								{
+									"key": "S_cur_code",
+									"value": "rub",
+									"type": "text"
+								},
+								{
+									"key": "S_koef",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "S_hint_code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "S_customerID",
+									"value": "{{customer_id}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/delete_products_from_cart_preview.php",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delete_products_from_cart_preview.php"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Негативные",
+			"item": [
+				{
+					"name": "Добавить товар в корзину через превью товара",
+					"item": [
+						{
+							"name": "Добавить товар в корзину через превью товара по неверному id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверяем, что status в ответе будет error\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.status).to.eql(\"error\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "950",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через превью товара, некорректный язык и валюта",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+											"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+											"quantity = parseInt(quantity);\r",
+											"pm.test(\"Товар был добавлен корректно (некорректный язык и валюта)\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    var expected_sum_quantity = (parseInt(current_sum_quantity) + quantity).toString();\r",
+											"    pm.expect(jsonData.sum_quantity).to.eql(expected_sum_quantity);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.set(\"current_sum_quantity\", pm.response.json().sum_quantity);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "bsabsab",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "енененен",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через превью товара, с пустым идентификатором сессии",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+											"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+											"quantity = parseInt(quantity);\r",
+											"pm.test(\"Товар с пустым идентификатором сессии успешно добавляется в корзину (количество товаров разное)\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    var expected_sum_quantity = (parseInt(current_sum_quantity) + quantity).toString();\r",
+											"    pm.expect(jsonData.sum_quantity).to.not.eql(expected_sum_quantity);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через превью товара, некорректный адрес запроса",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.html",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через превью товара, другой метод запроса",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверяем, что status в ответе будет error\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.status).to.eql(\"error\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через превью товара, количество товара превышает количество на складе",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+											"var requestData = pm.request.body.urlencoded.toObject();\r",
+											"var quantity = parseInt(requestData.quantity);\r",
+											"\r",
+											"pm.test(\"Указанного количества товаров нет на складе\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    var expected_sum_quantity = (parseInt(current_sum_quantity) + quantity).toString();\r",
+											"    pm.expect(jsonData.sum_quantity).to.eql(expected_sum_quantity);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.set(\"current_sum_quantity\", \"0\");"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "10000",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Добавить товар в корзину через персональную карточку товара",
+					"item": [
+						{
+							"name": "Добавить товар в корзину через персональную карточку товара по неверному id товара и parent_product",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверяем, что status в ответе будет error\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.status).to.eql(\"error\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "950",
+											"type": "text"
+										},
+										{
+											"key": "this_listId",
+											"value": "product_card",
+											"type": "text"
+										},
+										{
+											"key": "parent_product",
+											"value": "950",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через персональную карточку товара без ключей this_listId и parent_product",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+											"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+											"quantity = parseInt(quantity);\r",
+											"pm.test(\"Товар добавляется\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    var expected_sum_quantity = (parseInt(current_sum_quantity) + quantity).toString();\r",
+											"    pm.expect(jsonData.sum_quantity).to.eql(expected_sum_quantity);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.set(\"current_sum_quantity\", pm.response.json().sum_quantity);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "this_listId",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "parent_product",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через персональную карточку товара, некорректный язык и валюта",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+											"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+											"quantity = parseInt(quantity);\r",
+											"pm.test(\"Товар был добавлен корректно (некорректный язык и валюта)\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    var expected_sum_quantity = (parseInt(current_sum_quantity) + quantity).toString();\r",
+											"    pm.expect(jsonData.sum_quantity).to.eql(expected_sum_quantity);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.set(\"current_sum_quantity\", pm.response.json().sum_quantity);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "this_listId",
+											"value": "product_card",
+											"type": "text"
+										},
+										{
+											"key": "parent_product",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "bsabsab",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "енененен",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через персональную карточку товара, с пустым идентификатором сессии",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+											"var quantity = pm.collectionVariables.get(\"quantity\");\r",
+											"quantity = parseInt(quantity);\r",
+											"pm.test(\"Товар с пустым идентификатором сессии успешно добавляется в корзину (количество товаров разное)\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    var expected_sum_quantity = (parseInt(current_sum_quantity) + quantity).toString();\r",
+											"    pm.expect(jsonData.sum_quantity).to.not.eql(expected_sum_quantity);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "this_listId",
+											"value": "product_card",
+											"type": "text"
+										},
+										{
+											"key": "parent_product",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через персональную карточку товара, некорректный адрес запроса",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "this_listId",
+											"value": "product_card",
+											"type": "text"
+										},
+										{
+											"key": "parent_product",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.html",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.html"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через персональную карточку товара, другой метод запроса",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверяем, что status в ответе будет error\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.status).to.eql(\"error\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "this_listId",
+											"value": "product_card",
+											"type": "text"
+										},
+										{
+											"key": "parent_product",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Добавить товар в корзину через персональную карточку товара, количество товара превышает количество на складе",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var current_sum_quantity = pm.collectionVariables.get(\"current_sum_quantity\");\r",
+											"var requestData = pm.request.body.urlencoded.toObject();\r",
+											"var quantity = parseInt(requestData.quantity);\r",
+											"\r",
+											"pm.test(\"Указанного количества товаров нет на складе\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    var expected_sum_quantity = (parseInt(current_sum_quantity) + quantity).toString();\r",
+											"    pm.expect(jsonData.sum_quantity).to.eql(expected_sum_quantity);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.set(\"current_sum_quantity\", \"0\");"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "this_listId",
+											"value": "product_card",
+											"type": "text"
+										},
+										{
+											"key": "parent_product",
+											"value": "{{product_id}}",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "10000",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/add_products_to_cart_from_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"add_products_to_cart_from_preview.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Изменение количества / удаление товара",
+					"item": [
+						{
+							"name": "Удалить товар (уменьшить количество товара) через превью товара по несуществующему id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверяем, что status в ответе будет error\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.status).to.eql(\"error\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "950",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/delete_products_from_cart_preview_by_productID.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"delete_products_from_cart_preview_by_productID.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Удалить товар (уменьшить количество товара) через карточку товара по несуществующему id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверяем, что status в ответе будет error\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.status).to.eql(\"error\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "950",
+											"type": "text"
+										},
+										{
+											"key": "this_listId",
+											"value": "product_card",
+											"type": "text"
+										},
+										{
+											"key": "parent_product",
+											"value": "950",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/delete_products_from_cart_preview_by_productID.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"delete_products_from_cart_preview_by_productID.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Удалить товар (всю категорию) через кнопку в корзине по несуществующему id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"При удалении товара по несуществующему id status ответа ok\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.status).to.eql(\"ok\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "9502141241242142141421421",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/delete_products_from_cart_preview.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"delete_products_from_cart_preview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Изменение количество товара на странице корзины по некорректному itemID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Проверяем, что status в ответе будет error\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.status).to.eql(\"error\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "testk1n00",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "testk1no@yandex.ru",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "itemID",
+											"value": "5424981",
+											"description": "542498",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "{{quantity}}",
+											"type": "text"
+										},
+										{
+											"key": "action",
+											"value": "update_quantity",
+											"type": "text"
+										},
+										{
+											"key": "LANG_key",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "S_wh",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_CID",
+											"value": "{{id_session}}",
+											"type": "text"
+										},
+										{
+											"key": "S_cur_code",
+											"value": "rub",
+											"type": "text"
+										},
+										{
+											"key": "S_koef",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "S_hint_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "S_customerID",
+											"value": "{{customer_id}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/action_with_basket_on_cart_page.php",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"action_with_basket_on_cart_page.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://altaivita.ru/engine/cart",
+			"type": "string"
+		},
+		{
+			"key": "id_session",
+			"value": "54d759e83ff00693132385165cb60c74",
+			"type": "string"
+		},
+		{
+			"key": "customer_id",
+			"value": "319514",
+			"type": "string"
+		},
+		{
+			"key": "current_sum_quantity",
+			"value": "0",
+			"type": "string"
+		},
+		{
+			"key": "quantity",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "product_id",
+			"value": "951",
+			"type": "string"
+		},
+		{
+			"key": "itemIDbyCart",
+			"value": "543130",
+			"type": "string"
+		}
+	]
+}
